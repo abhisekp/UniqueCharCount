@@ -5,11 +5,11 @@ import java.util.ArrayList;
 
 /**
  * Model
- * <p>
+ * <p/>
  * Creation Date: 12-06-2014 08:12 AM
  *
- * @version 0.1.0
- * @since 0.1.0
+ * @version 1.0.1
+ * @since 1.0.0
  */
 public class UniqueCharCount implements Observable {
 	private final MyGUI gui;
@@ -19,12 +19,18 @@ public class UniqueCharCount implements Observable {
 	public UniqueCharCount() {
 		try {
 			UIManager.setLookAndFeel(UIManager.getSystemLookAndFeelClassName());
-		} catch (ClassNotFoundException | InstantiationException | IllegalAccessException | UnsupportedLookAndFeelException e) {
+		} catch (ClassNotFoundException e) {
+			e.printStackTrace();
+		} catch (InstantiationException e) {
+			e.printStackTrace();
+		} catch (IllegalAccessException e) {
+			e.printStackTrace();
+		} catch (UnsupportedLookAndFeelException e) {
 			e.printStackTrace();
 		}
 		gui = new MyGUI(this);
 
-		Observable.addObserver(gui);
+		addObserver(gui);
 	}
 
 	public static void main(String[] args) {
@@ -32,10 +38,28 @@ public class UniqueCharCount implements Observable {
 	}
 
 	@Override
+	public void addObserver(TextObserver observer) {
+		observerList.add(observer);
+	}
+
+	@Override
+	public void removeObserver(TextObserver observer) {
+		observerList.remove(observer);
+	}
+
+	@Override
+	public void notifyObservers() {
+		for (TextObserver observer : observerList) {
+			observer.update();
+		}
+	}
+
+
+	@Override
 	public void update() {
 		inputText = gui.getInputText();
 		parseText();
-		Observable.notifyObservers();
+		notifyObservers();
 	}
 
 	/**
@@ -63,10 +87,10 @@ public class UniqueCharCount implements Observable {
 
 		outputText += tmpString + "\n";
 		for (int i = 0; i < tmpString.length(); i++) {
-			if (uniqueChar.get(i) == ' ') {
-				outputText += ("<space> - " + uniqueCharCount.get(i) + "\n");
-			} else {
+			if (' ' != uniqueChar.get(i)) {
 				outputText += (uniqueChar.get(i) + " - " + uniqueCharCount.get(i) + "\n");
+			} else {
+				outputText += ("<space> - " + uniqueCharCount.get(i) + "\n");
 			}
 		}
 	}

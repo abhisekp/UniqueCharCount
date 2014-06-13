@@ -1,11 +1,12 @@
 package com.abhisekp;
 
 /**
- * <p>
+ * Observer interface
+ * <p/>
  * Creation Date: 12-06-2014 09:55 AM
  *
- * @version 0.1.0
- * @since 0.1.0
+ * @version 1.0.1
+ * @since 1.0.0
  */
 public interface TextObserver {
 	public void update();

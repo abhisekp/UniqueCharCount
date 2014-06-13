@@ -2,18 +2,15 @@ package com.abhisekp;
 
 import javax.swing.*;
 import java.awt.*;
-import java.awt.event.FocusEvent;
-import java.awt.event.FocusListener;
-import java.awt.event.KeyEvent;
-import java.awt.event.KeyListener;
+import java.awt.event.*;
 
 /**
  * GUI
- * <p>
+ * <p/>
  * Creation Date: 12-06-2014 08:12 AM
  *
- * @version 0.1.0
- * @since 0.1.0
+ * @version 1.0.1
+ * @since 1.0.0
  */
 public class MyGUI extends JFrame implements TextObserver {
 	private JLabel inputLabel = new JLabel("Input");
@@ -49,7 +46,44 @@ public class MyGUI extends JFrame implements TextObserver {
 	}
 
 	private void addListeners() {
-		parseBTN.addActionListener(e -> parseText());
+		parseBTN.addActionListener(new ActionListener() {
+			@Override
+			public void actionPerformed(ActionEvent e) {
+				parseText();
+			}
+		});
+
+		inputBox.addMouseListener(new MouseListener() {
+
+			@Override
+			public void mouseClicked(MouseEvent e) {
+				inputBox.selectAll();
+			}
+
+			@Override
+			public void mousePressed(MouseEvent e) {
+
+			}
+
+			@Override
+			public void mouseReleased(MouseEvent e) {
+
+			}
+
+			@Override
+			public void mouseEntered(MouseEvent e) {
+				parseText();
+				inputBox.requestFocus();
+				inputBox.selectAll();
+			}
+
+			@Override
+			public void mouseExited(MouseEvent e) {
+				parseText();
+				inputBox.requestFocus();
+				inputBox.selectAll();
+			}
+		});
 
 		inputBox.addKeyListener(new KeyListener() {
 			@Override

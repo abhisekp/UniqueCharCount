@@ -3,29 +3,35 @@ package com.abhisekp;
 import java.util.ArrayList;
 
 /**
- * <p>
+ * <p/>
  * Creation Date: 12-06-2014 09:54 AM
  *
- * @version 0.1.0
- * @since 0.1.0
+ * @version 1.0.1
+ * @since 1.0.0
  */
 public interface Observable {
 	public ArrayList<TextObserver> observerList = new ArrayList<TextObserver>();
 
-	public static void addObserver(TextObserver observer) {
-		observerList.add(observer);
-	}
+	/**
+	 * Add observer to list of observers
+	 * @param observer Implement {@link com.abhisekp.TextObserver}
+	 */
+	public void addObserver(TextObserver observer);
 
-	public static void removeObserver(TextObserver observer) {
-		observerList.remove(observer);
-	}
+	/**
+	 * Remove observer to list of observers
+	 * @param observer Implement {@link com.abhisekp.TextObserver}
+	 */
+	public void removeObserver(TextObserver observer);
 
-	public static void notifyObservers() {
-		for (TextObserver observer : observerList) {
-			observer.update();
-		}
-	}
+	/**
+	 * Notifies all observers
+	 */
+	public void notifyObservers();
 
+	/**
+	 * Call on Observer updated
+	 */
 	public void update();
 
 }
