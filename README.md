@@ -4,7 +4,7 @@ Unique Character Counter shows a string of unique characters entered into text b
 # Releases Changelog
 All [Releases](https://github.com/abhisekp/UniqueCharCount/releases)
 
-- Release [v1.0.1]()
+- Release [v1.0.1](https://github.com/abhisekp/UniqueCharCount/releases/tag/v1.0.1)
 	- Minor changes to UniqueCharCount class
 	- Compatibility with Java v1.6
 - Release [v1.0.0](https://github.com/abhisekp/UniqueCharCount/releases/tag/v1.0.0)
