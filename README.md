@@ -1,5 +1,6 @@
 # UniqueCharCount
 [![Gitter chat](https://badges.gitter.im/abhisekp/ComputerEnthusiasts.png)](https://gitter.im/abhisekp/ComputerEnthusiasts)
+
 Unique Character Counter shows a string of unique characters entered into text box and counts the number of repetitions of unique characters. 
 
 # Releases Changelog
